@@ -290,3 +290,20 @@ app.listen(PORT, () => {
     // 第2引数: 起動完了時に実行されるコールバック関数
     console.log(`Server is running on http://localhost:${PORT}`);
 })
+
+// ========================================
+// CORS 設定を更新
+// ========================================
+
+// --- Day4 変更 ここから ---
+// 本番環境では特定のオリジンのみ許可
+const corsOptions = {
+    origin: [
+        "http://localhost:3000",
+        "https://gs-exp-next-gamma.vercel.app/",  // あなたの Vercel URL
+        // 他の Vercel URL がある場合は追加
+    ],
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
